@@ -13,7 +13,7 @@
     <style>
         :root {
             --sidebar-width: 250px;
-            --primary-color: #2c3e50;
+            --primary-color: #172a50;
             --secondary-color: #34495e;
             --accent-color: #3498db;
             --success-color: #27ae60;
@@ -28,26 +28,14 @@
         
         .sidebar {
             width: var(--sidebar-width);
-            height: 100vh;
+            height: calc(100vh - 60px); /* Adjust for header height */
             position: fixed;
             left: 0;
-            top: 0;
+            top: 60px; /* Position below header */
             background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             z-index: 1000;
             transition: all 0.3s ease;
             overflow-y: auto;
-        }
-        
-        .sidebar-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .sidebar-brand {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
         }
         
         .sidebar-nav {
@@ -80,18 +68,13 @@
         
         .main-content {
             margin-left: var(--sidebar-width);
+            margin-top: 60px; /* Adjust for header height */
             transition: all 0.3s ease;
-        }
-        
-        .topbar {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            min-height: calc(100vh - 120px); /* Adjust for header and footer */
         }
         
         .content-wrapper {
-            padding: 0 2rem 2rem 2rem;
+            padding: 2rem;
         }
         
         .stat-card {
@@ -144,6 +127,12 @@
             vertical-align: middle;
         }
         
+        /* Footer positioning */
+        .footer-container {
+            margin-left: var(--sidebar-width);
+            transition: all 0.3s ease;
+        }
+        
         @media (max-width: 768px) {
             .sidebar {
                 margin-left: calc(-1 * var(--sidebar-width));
@@ -151,18 +140,20 @@
             .main-content {
                 margin-left: 0;
             }
+            .footer-container {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="fixed-top">
+        <div th:replace="~{admin-ajax/layout/header::header}"></div>
+    </header>
+
     <!-- Sidebar -->
     <nav class="sidebar">
-        <div class="sidebar-header">
-            <a href="#" class="sidebar-brand">
-                <i class="fas fa-tachometer-alt me-2"></i>
-                Admin Panel
-            </a>
-        </div>
         <ul class="sidebar-nav">
             <li class="nav-item">
                 <a class="nav-link active" th:href="@{/view/api/admin}">
@@ -217,34 +208,15 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Navigation -->
-        <header class="topbar d-flex justify-content-between align-items-center">
-            <div>
-                <button class="btn btn-link" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <span class="ms-2 text-muted">Welcome to Admin Dashboard</span>
-            </div>
-            <div class="d-flex align-items-center">
-                <div class="dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="User">
-                        Admin User
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-
         <!-- Page Content -->
         <div class="content-wrapper">
             <div layout:fragment="content"></div>
         </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+        <div th:replace="~{admin-ajax/layout/footer::footer}"></div>
     </div>
 
     <!-- Bootstrap JS -->
@@ -252,11 +224,6 @@
     
     <!-- Custom JavaScript -->
     <script>
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('collapsed');
-            document.querySelector('.main-content').classList.toggle('expanded');
-        }
-        
         // Set active nav item
         document.addEventListener('DOMContentLoaded', function() {
             const currentPath = window.location.pathname;
