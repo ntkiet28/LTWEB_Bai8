@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout_admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm danh mục</title>
+</head>
+<body>
+    <section class="row" layout:fragment="content">
+        <div class="col mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2 th:text="${category.isEdit ? 'Chỉnh sửa danh mục' : 'Thêm mới danh mục'}"></h2>
+                </div>
+                <div class="card-body">
+                    <div th:if="${message != null}" class="alert alert-primary" role="alert">
+                        [[${message}]]
+                    </div>
+                    <form th:action="@{/admin/categories/add}" method="post" th:object="${category}" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="categoryName" class="form-label">Tên danh mục</label>
+                            <input type="text" class="form-control" id="categoryName" th:field="*{categoryName}"
+                                   th:errorclass="is-invalid">
+                            <div th:if="${#fields.hasErrors('categoryName')}" class="invalid-feedback">
+                                <span th:errors="*{categoryName}"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="icon" class="form-label">Icon</label>
+                            <input type="file" class="form-control" id="icon" name="iconFile">
+                            <div th:if="${#fields.hasErrors('icon')}" class="invalid-feedback">
+                                <span th:errors="*{icon}"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <button th:text="${category.isEdit ? 'Cập nhật' : 'Lưu'}" class="btn btn-primary" type="submit"></button>
+                            <a th:href="@{/admin/categories}" class="btn btn-secondary">Quay lại</a>
+                            <input type="hidden" th:field="*{isEdit}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

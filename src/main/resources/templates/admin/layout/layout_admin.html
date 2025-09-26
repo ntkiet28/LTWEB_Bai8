@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <!-- Các phần tử head cần thiết -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="row">
+        <div class="col">
+            <div th:replace="~{admin/layout/header::header}"></div>
+        </div>
+    </header>
+    
+   
+    <div class="row">
+        <div class="col">
+             <div th:replace="~{admin/layout/nav::nav}"></div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="row mt-4">
+            <div class="col mt-5 mb-5">
+                <div layout:fragment="content"></div> <!-- Nội dung chính -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="row">
+        <div class="col">
+            <div th:replace="~{admin/layout/footer::footer}"></div>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

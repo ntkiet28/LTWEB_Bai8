@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">About Us - BaiTap8</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .section-padding {
+            padding: 4rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 100%;
+            border: none;
+        }
+        
+        .tech-badge {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.25rem;
+            display: inline-block;
+        }
+        
+        .timeline-item {
+            border-left: 3px solid #667eea;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            position: absolute;
+            left: -9px;
+            top: 0;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/home">
+                <i class="fas fa-cube me-2"></i>BaiTap8
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/view/api/admin">
+                        <i class="fas fa-tachometer-alt me-1"></i>Admin Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-4">About BaiTap8</h1>
+                    <p class="lead">
+                        A comprehensive product management system built with modern technologies 
+                        and designed for efficiency and scalability.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Project Overview</h2>
+                    <p class="mb-4">
+                        BaiTap8 is a Spring Boot web application designed to demonstrate 
+                        modern web development practices and provide a practical solution 
+                        for product and category management.
+                    </p>
+                    <p class="mb-4">
+                        This project showcases the integration of various technologies 
+                        including Spring Boot, Thymeleaf, Bootstrap, and RESTful APIs 
+                        to create a full-featured web application.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="/view/api/admin" class="btn btn-primary">
+                            <i class="fas fa-tachometer-alt me-2"></i>View Dashboard
+                        </a>
+                        <a href="/swagger-ui.html" target="_blank" class="btn btn-outline-primary">
+                            <i class="fas fa-code me-2"></i>API Documentation
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h3 class="mb-3">
+                            <i class="fas fa-bullseye me-2 text-primary"></i>Project Goals
+                        </h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Demonstrate Spring Boot capabilities
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Implement CRUD operations with REST APIs
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Create responsive user interfaces
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Practice modern web development
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                File upload and management
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-4">Technology Stack</h2>
+                <p class="lead text-muted">Built with modern, industry-standard technologies</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h4 class="mb-3">
+                            <i class="fas fa-server me-2 text-primary"></i>Backend Technologies
+                        </h4>
+                        <div class="mb-3">
+                            <span class="tech-badge">Spring Boot 3.5.6</span>
+                            <span class="tech-badge">Spring Data JPA</span>
+                            <span class="tech-badge">Spring Web</span>
+                            <span class="tech-badge">Spring Validation</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="tech-badge">Java 17</span>
+                            <span class="tech-badge">Maven</span>
+                            <span class="tech-badge">Lombok</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h4 class="mb-3">
+                            <i class="fas fa-palette me-2 text-success"></i>Frontend Technologies
+                        </h4>
+                        <div class="mb-3">
+                            <span class="tech-badge">Thymeleaf</span>
+                            <span class="tech-badge">Bootstrap 5</span>
+                            <span class="tech-badge">Font Awesome</span>
+                            <span class="tech-badge">jQuery</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="tech-badge">DataTables</span>
+                            <span class="tech-badge">Chart.js</span>
+                            <span class="tech-badge">AJAX</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h4 class="mb-3">
+                            <i class="fas fa-database me-2 text-warning"></i>Database & Storage
+                        </h4>
+                        <div class="mb-3">
+                            <span class="tech-badge">H2 Database</span>
+                            <span class="tech-badge">MySQL Support</span>
+                            <span class="tech-badge">JPA/Hibernate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h4 class="mb-3">
+                            <i class="fas fa-cogs me-2 text-info"></i>Development Tools
+                        </h4>
+                        <div class="mb-3">
+                            <span class="tech-badge">SpringDoc OpenAPI</span>
+                            <span class="tech-badge">Spring DevTools</span>
+                            <span class="tech-badge">Maven Compiler</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Timeline -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center mb-5">Development Process</h2>
+                    
+                    <div class="timeline-item">
+                        <h5>Project Setup & Configuration</h5>
+                        <p class="text-muted mb-0">
+                            Initialize Spring Boot project, configure dependencies, 
+                            and set up development environment.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h5>Database Design & Entity Modeling</h5>
+                        <p class="text-muted mb-0">
+                            Create JPA entities for Category and Product with relationships 
+                            and validation constraints.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h5>Backend API Development</h5>
+                        <p class="text-muted mb-0">
+                            Implement RESTful APIs for CRUD operations, 
+                            file upload functionality, and error handling.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h5>Frontend Interface Creation</h5>
+                        <p class="text-muted mb-0">
+                            Build responsive UI with Thymeleaf templates, 
+                            Bootstrap components, and JavaScript interactions.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h5>Testing & Documentation</h5>
+                        <p class="text-muted mb-0">
+                            Comprehensive testing, API documentation with Swagger, 
+                            and deployment preparation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Support Section -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-4">Project Information</h2>
+                <p class="lead text-muted">Technical details and project resources</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-code fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="mb-3">Source Code</h5>
+                        <p class="text-muted mb-3">
+                            View the complete source code and documentation on GitHub.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fab fa-github me-2"></i>GitHub Repository
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-book fa-3x text-success"></i>
+                        </div>
+                        <h5 class="mb-3">Documentation</h5>
+                        <p class="text-muted mb-3">
+                            Complete API documentation with Swagger UI interface.
+                        </p>
+                        <a href="/swagger-ui.html" target="_blank" class="btn btn-outline-success">
+                            <i class="fas fa-external-link-alt me-2"></i>API Docs
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-database fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="mb-3">Database Console</h5>
+                        <p class="text-muted mb-3">
+                            Access H2 database console for development and testing.
+                        </p>
+                        <a href="/h2-console" target="_blank" class="btn btn-outline-warning">
+                            <i class="fas fa-external-link-alt me-2"></i>H2 Console
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5><i class="fas fa-cube me-2"></i>BaiTap8</h5>
+                    <p class="mb-0">Spring Boot Product Management System</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <p class="mb-0">© 2025 BaiTap8 Project. Educational Purpose.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
